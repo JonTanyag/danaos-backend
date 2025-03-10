@@ -16,6 +16,8 @@ public class StudentService : IStudentService
 
     public async Task CreateStudent(StudentDto student)
     {
+        // We map the StudentDto to Student entity
+        // to be able to save a record.
         var studentEntity = new Student {
             Name = student.Name
         };
@@ -24,18 +26,12 @@ public class StudentService : IStudentService
         await _context.SaveChangesAsync();
     }
 
-    public async Task DeleteStudent(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<StudentDto> GetStudentById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<IEnumerable<StudentDto>> GetStudents()
     {
+        // When getting record from Student entity
+        // we use .Include() to also get mapping table `Grades`
+        // Then map the result to StudentDto with 
+        // calculated average of grade
         var students = _context.Students
                         .Include(g => g.Grades)
                         .Select(s => new StudentDto
@@ -47,10 +43,5 @@ public class StudentService : IStudentService
         }).ToList();
 
         return students;
-    }
-
-    public Task UpdateStudent(StudentDto student)
-    {
-        throw new NotImplementedException();
     }
 }

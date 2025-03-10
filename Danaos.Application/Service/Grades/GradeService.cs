@@ -13,6 +13,8 @@ public class GradeService : IGradeService
     }
     public async Task CreateGrade(GradeDto grade)
     {
+        // We need to map GradeDto to Grade entity
+        // so that EF can save the data
         var gradeEntity = new Grade
         {
             Student_Id = grade.StudentId,
@@ -25,13 +27,4 @@ public class GradeService : IGradeService
         await _dbContext.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<GradeDto>> GetStudentGrades(int studentId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateGrade(GradeDto grade)
-    {
-        throw new NotImplementedException();
-    }
 }
