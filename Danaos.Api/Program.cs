@@ -7,6 +7,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAll",
+    policy => 
+    {
+        policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -21,6 +31,7 @@ builder.Services.AddScoped<IGradeService, GradeService>();
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 // Apply migrations automatically
 using (var scope = app.Services.CreateScope())
 {

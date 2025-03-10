@@ -8,5 +8,4 @@ public class StudentDto
 {
     public string Name { get; set; }
     public double Average { get; set; }
-    public ICollection<GradeDto> Grades { get; set; } = new List<GradeDto>();
 }
