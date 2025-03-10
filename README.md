@@ -19,8 +19,14 @@ Student
 GET /api/Student: Retrieves a list of students.
 POST /api/Student/create: Add new student.
 ```
-Grades
+To add new Student
+Please use `POST /api/Student/create: Add new student.` with the following payload.
+
 ``` bash
-GET /api/Grade: Retrieves a list of students.
-POST /api/Grade/create: Add grade to student.
+{
+  "name": "string",
+  "average": 0
+}
+
 ```
+
