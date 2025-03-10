@@ -24,9 +24,25 @@ Please use `POST /api/Student/create: Add new student.` with the following paylo
 
 ``` bash
 {
-  "name": "string",
-  "average": 0
+  "name": "Jon Wick",
+  "average": 88
 }
 
 ```
+Grades
+``` bash
+GET /api/Grade: Retrieves a list of students.
+POST /api/Grade/create: Add grade to student.
+```
 
+To add Grade to a Student
+Please use `POST /api/Grade/create: Add grade to student` with the following payload.
+
+``` bash
+{
+  "studentId": 2,
+  "courseId": 102,
+  "courseName": "Math",
+  "grades": 88
+}
+```
